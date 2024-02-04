@@ -1,0 +1,73 @@
+main {
+  width: 100vw;
+  background-color: #f6f8f9;
+}
+
+#section1 {
+  width: 75%;
+}
+
+.book-images-container {
+  width: 12.5%;
+  height: 83.5vh;
+  background-color: rgba(245, 245, 239, 0.86);
+}
+
+.book-table-wrapper {
+  max-height: 65vh;
+  overflow-y: scroll;
+}
+
+#tbl-books thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+#tbl-books thead tr th:first-child,
+#tbl-books tbody tr td:first-child{
+  width: 150px;
+}
+
+#tbl-books thead tr th:last-child,
+#tbl-books tbody tr td:last-child{
+  width: 100px;
+}
+
+#tbl-books thead tr th:nth-child(4),
+#tbl-books tbody tr td:nth-child(4){
+  width: 120px;
+}
+
+.contact {
+  min-width: 110px;
+  word-wrap: break-word;
+}
+
+#tbl-books tbody tr {
+  cursor: pointer;
+}
+
+.actions div:first-child svg:hover {
+  fill: green;
+}
+
+.actions div:last-child svg:hover {
+  fill: red;
+}
+
+.image-container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.book-image {
+  height: 50%;
+  width: 100%;
+}
+
+.image {
+  height: 250px;
+  width: 100%;
+}

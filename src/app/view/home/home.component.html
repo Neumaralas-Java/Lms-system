@@ -1,0 +1,111 @@
+<main class="d-flex">
+  <section id="dashboard">
+    <div id="row_1" class="d-flex justify-content-around mt-5">
+      <div class="info_card color-1">
+        <div class="d-flex justify-content-around">
+          <div class="font-1 d-flex justify-content-center align-items-center">{{totalMembers}}</div>
+          <div class="label_image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-people color-gray" viewBox="0 0 16 16">
+              <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="fs-2 fw-bold text-center mt-3">Total Members</div>
+      </div>
+      <div class="info_card color-2">
+        <div class="d-flex justify-content-around">
+          <div class="font-1 d-flex justify-content-center align-items-center">{{totalBooks}}</div>
+          <div class="label_image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-book color-gray" viewBox="0 0 16 16">
+              <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="fs-2 fw-bold text-center mt-3">Total Books</div>
+      </div>
+      <div class="info_card color-3">
+        <div class="d-flex justify-content-around">
+          <div class="font-1 d-flex justify-content-center align-items-center">{{totalIssues}}</div>
+          <div class="label_image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" fill="currentColor" class="bi bi-arrow-left-right pt-2 color-gray" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="fs-2 fw-bold text-center mt-4">Total Issues</div>
+      </div>
+    </div>
+    <div id="row_2" class="d-flex justify-content-around mt-5">
+      <div class="info_card color-3">
+        <div class="d-flex justify-content-around">
+          <div class="font-1 d-flex justify-content-center align-items-center">{{totalFines}}</div>
+          <div class="label_image pt-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="130" height="130" fill="currentColor" class="bi bi-cash-coin color-gray" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"/>
+              <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z"/>
+              <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z"/>
+              <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="fs-2 fw-bold text-center mt-3">Total Fines</div>
+      </div>
+      <div class="info_card color-4">
+        <div class="d-flex justify-content-around">
+          <div class="font-1 d-flex justify-content-center align-items-center">{{availableBooks}}</div>
+          <div class="label_image pt-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" fill="currentColor" class="bi bi-stack color-gray" viewBox="0 0 16 16">
+              <path d="m14.12 10.163 1.715.858c.22.11.22.424 0 .534L8.267 15.34a.598.598 0 0 1-.534 0L.165 11.555a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.66zM7.733.063a.598.598 0 0 1 .534 0l7.568 3.784a.3.3 0 0 1 0 .535L8.267 8.165a.598.598 0 0 1-.534 0L.165 4.382a.299.299 0 0 1 0-.535L7.733.063z"/>
+              <path d="m14.12 6.576 1.715.858c.22.11.22.424 0 .534l-7.568 3.784a.598.598 0 0 1-.534 0L.165 7.968a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.659z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="fs-2 fw-bold text-center mt-2">Available Books</div>
+      </div>
+      <div class="info_card color-1">
+        <div class="d-flex justify-content-around">
+          <div class="font-1 d-flex justify-content-center align-items-center">{{issuedBooks}}</div>
+          <div class="label_image pt-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" fill="currentColor" class="bi bi-sign-turn-right color-gray" viewBox="0 0 16 16">
+              <path d="M5 8.5A2.5 2.5 0 0 1 7.5 6H9V4.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L9.41 8.658A.25.25 0 0 1 9 8.466V7H7.5A1.5 1.5 0 0 0 6 8.5V11H5V8.5Z"/>
+              <path fill-rule="evenodd" d="M6.95.435c.58-.58 1.52-.58 2.1 0l6.515 6.516c.58.58.58 1.519 0 2.098L9.05 15.565c-.58.58-1.519.58-2.098 0L.435 9.05a1.482 1.482 0 0 1 0-2.098L6.95.435Zm1.4.7a.495.495 0 0 0-.7 0L1.134 7.65a.495.495 0 0 0 0 .7l6.516 6.516a.495.495 0 0 0 .7 0l6.516-6.516a.495.495 0 0 0 0-.7L8.35 1.134Z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="fs-2 fw-bold text-center mt-2">Issued Books</div>
+      </div>
+    </div>
+  </section>
+  <section id="availability" class="border-start">
+    <div id="book" class="text-center mt-5 border-bottom p-2 m-2 rounded-3">
+      <div class="fs-5">Book Availability</div>
+      <div class="mb-3 text-center">
+        <label for="txt-isbn" class="form-label">ISBN</label>
+        <input #txtIsbn type="text" class="form-control text-center" id="txt-isbn" placeholder="Eg. 1628028360482">
+        <div class="invalid-feedback">
+          Isbn can't be empty
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-primary mb-2" (click)="bookAvailable(txtIsbn, bookLabel)">Find</button>
+        <button class="btn btn-secondary mb-2 mx-2" (click)="txtIsbn.value=''; bookLabel.innerText=''; txtIsbn.classList.remove('is-invalid', 'animate__shakeX')">Clear</button>
+      </div>
+      <div #bookLabel></div>
+    </div>
+    <div id="member" class="text-center border-bottom p-2 m-2 mt-5 rounded-3">
+      <div class="fs-5">Member Availability</div>
+      <div class="mb-3 text-center">
+        <label for="txt-mid" class="form-label">Member Id</label>
+        <input #txtId (focus)="memberLabel.innerText = ''" type="text" class="form-control text-center" id="txt-mid" placeholder="Eg. 982761856V">
+        <div class="invalid-feedback">
+          Id can't be empty
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-primary mb-2" (click)="checkMember(txtId, memberLabel)">Find</button>
+        <button class="btn btn-secondary mb-2 mx-2" (click)="txtId.value=''; memberLabel.innerText=''; txtId.classList.remove('is-invalid', 'animate__shakeX')">Clear</button>
+      </div>
+      <div #memberLabel></div>
+    </div>
+  </section>
+</main>

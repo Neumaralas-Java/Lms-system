@@ -1,0 +1,36 @@
+#background {
+  background-image: url("/assets/images/library.jpg");
+}
+
+#top-menu {
+  background-color: antiquewhite;
+}
+
+#content {
+  width: 100vw;
+  height: 83.5vh;
+}
+
+#menu > nav > .btn {
+  width: 170px;
+  font-size: 1.5rem;
+  padding: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition-duration: 300ms;
+  transition-property: all;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+#menu .btn:hover {
+  scale: 1.1;
+
+}
+
+.active{
+  color: black;
+  background-color: #dce777;
+}

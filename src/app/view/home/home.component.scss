@@ -1,0 +1,65 @@
+main {
+  height: 100%;
+  width: 100%;
+}
+
+#dashboard {
+  height: 100%;
+  width: calc(100% - 300px);
+}
+
+#availability {
+  height: 100%;
+  width: 300px;
+}
+
+#book,
+#member {
+  background-color: aliceblue;
+}
+
+#member {
+  top: 380px;
+  position: fixed;
+}
+
+.info_card {
+  border-radius: 20px;
+  width: 350px;
+  height: 220px;
+  //background-color: #ebe881;
+  box-shadow: 6px 5px 5px 2px #726559;
+}
+
+.color-1 {
+  background-color: aqua;
+}
+
+.color-2 {
+  background-color: #ebe881;
+}
+
+.color-3 {
+  background-color: #8df568;
+}
+
+.color-4 {
+  background-color: #e3fb06
+}
+
+
+.label_image > img {
+  width: 130px;
+  height: 130px;
+}
+
+.font-1 {
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.color-gray {
+  color: #535252;
+}
+
+

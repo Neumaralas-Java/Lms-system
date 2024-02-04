@@ -1,0 +1,182 @@
+<main>
+  <div class="d-flex">
+    <div class="border-end p-1 d-flex gap-2 book-images-container">
+      <section class="image-container d-flex flex-column gap-2 p-1 align-items-center">
+        <div class="book-image">
+          <div class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="/assets/images/dance-of-dreams-1.jpg" class="image" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="/assets/images/Hunted-house-2.jpg" class="image" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="/assets/images/Have-You-Seen-Her-3.jpg" class="image" alt="...">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="book-image">
+          <div class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="/assets/images/Book-of-dreams-4.jpg" class="image" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="/assets/images/Harry-potter-5.jpg" class="image" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="/assets/images/House-of-gold-6.jpeg" class="image" alt="...">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <section id="section1">
+      <section class="d-flex justify-content-between border-bottom p-2">
+        <h2 class="m-0 align-self-center">Manage Books</h2>
+        <button id="btn-new-book" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#new-book-modal" (click)="newBook(txtIsbn, txtTitle, txtAuthor, txtCopies)">New Book</button>
+      </section>
+      <section class="p-2">
+        <input #txtSearch id="txt-search" class="form-control text-center" type="text" (input)="getBooks(txtSearch)" placeholder="Search Books">
+      </section>
+      <section class="p-2">
+        <div class="book-table-wrapper">
+          <table id="tbl-books" class="table table-striped table-hover table-bordered">
+            <thead class="table-light">
+            <tr class="table-primary">
+              <th class="text-center">ISBN</th>
+              <th class="text-center">Title</th>
+              <th class="d-none d-xl-table-cell text-center">Author</th>
+              <th class="contact text-center">Copies</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let book of bookList">
+              <td class="text-center">{{book.isbn}}</td>
+              <td>{{book.title}}</td>
+              <td class="d-none d-xl-table-cell">{{book.author}}</td>
+              <td class="contact text-center">{{book.copies}}</td>
+              <td>
+                <div class="actions d-flex gap-3 justify-content-center">
+                  <div  (click)="updateBook(book, txtIsbn, txtTitle, txtAuthor, txtCopies)"
+                        data-bs-toggle="modal" data-bs-target="#new-book-modal" title="Update Book">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                         class="bi bi-pencil-square" viewBox="0 0 16 16">
+                      <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                      <path fill-rule="evenodd"
+                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                    </svg>
+                  </div>
+                  <div (click)="deleteBook(book.isbn)" title="Delete Book">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                         class="bi bi-trash" viewBox="0 0 16 16">
+                      <path
+                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                      <path
+                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                    </svg>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr *ngIf="!bookList">
+              <td class="text-center" colspan="5">No book records are found!</td>
+            </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+    </section>
+    <div class="border-start p-1 d-flex gap-2 book-images-container">
+      <section class="image-container d-flex flex-column gap-2 p-1 align-items-center">
+        <div class="book-image">
+          <div class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="/assets/images/Load-of-the-rings-7.jpg" class="image" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="/assets/images/The-end-8.jpg" class="image" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="/assets/images/The-golden-doves-9.jpg" class="image" alt="...">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="book-image">
+          <div class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="/assets/images/The-others-10.jpeg" class="image" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="/assets/images/The-wheel-of-time-11.jpg" class="image" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="/assets/images/Tiepolo-blue-12.jpeg" class="image" alt="...">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+<!-- Modal -->
+<div class="modal fade" id="new-book-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">{{modelTitle}}</h1>
+        <button id="btnClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="mb-3">
+          <label for="txt-id" class="form-label">ISBN</label>
+          <input #txtIsbn type="text" [(ngModel)]="isbn" class="form-control text-center" id="txt-id" placeholder="Eg. 1628028360482">
+          <div class="invalid-feedback">
+            Isbn can't be empty
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="txt-name" class="form-label">Book Title</label>
+          <input #txtTitle type="text" [(ngModel)]="title" class="form-control text-center" id="txt-name" placeholder="Eg. Harry Potter">
+          <div class="invalid-feedback">
+            Title can't be empty
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="txt-contact" class="form-label">Author</label>
+          <input #txtAuthor type="text" [(ngModel)]="author" class="form-control text-center" id="txt-contact" placeholder="Eg. J.K. Rowling">
+          <div class="invalid-feedback">
+            Author can't be empty
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="txt-address" class="form-label">Number of Copies</label>
+          <input #txtCopies type="text" [(ngModel)]="copies" class="form-control text-center" id="txt-address" placeholder="Eg. 30">
+          <div class="invalid-feedback">
+            Copies can't be empty
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <div id="loader">
+          <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        </div>
+        <button id="btn-save" type="button" class="btn btn-primary" (click)="saveBook(txtIsbn, txtTitle, txtAuthor, txtCopies)"
+        >{{btnText}}</button>
+      </div>
+    </div>
+  </div>
+</div>

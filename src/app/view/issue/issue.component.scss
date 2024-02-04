@@ -1,0 +1,54 @@
+main {
+  width: 100vw;
+  background-color: #f6f8f9;
+}
+
+.issue-table-wrapper {
+  max-height: 65vh;
+  overflow-y: scroll;
+}
+
+#tbl-issue thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+#tbl-issue thead tr th:first-child,
+#tbl-issue tbody tr td:first-child{
+  width: 150px;
+}
+
+#tbl-issue thead tr th:last-child,
+#tbl-issue tbody tr td:last-child{
+  width: 100px;
+}
+
+#tbl-issue thead tr th:nth-child(4),
+#tbl-issue tbody tr td:nth-child(4){
+  width: 250px;
+}
+
+#tbl-issue tbody tr {
+  cursor: pointer;
+}
+
+.actions div:first-child svg:hover {
+  fill: green;
+}
+
+.actions div:last-child svg:hover {
+  fill: red;
+}
+
+#sort {
+  width: 200px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.font-color-gray {
+  color: #4f4e4e;
+}

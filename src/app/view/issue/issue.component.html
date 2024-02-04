@@ -1,0 +1,146 @@
+<main>
+  <section class="d-flex justify-content-between border-bottom p-2">
+    <h2 class="m-0 align-self-center">Manage Issues</h2>
+    <button id="btn-new-issue" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#new-issue-modal" (click)="newIssue(txtIsbn, txtMemberId)">New Issue</button>
+  </section>
+  <section class="p-2 form-control d-flex gap-2">
+    <input #txtSearch (input)="getIssues(txtSearch)" id="txt-search" class="form-control text-center" type="text" placeholder="Search Issue">
+    <div id="sort" class="mt-2">
+      <input class="cursor-pointer" type="radio" name="return" value="All" [(ngModel)]="return" (click)="getIssues(txtSearch)"> All
+      <input class="cursor-pointer" type="radio" name="return" value="Non-Return" [(ngModel)]="return" (click)="getIssues(txtSearch)"> Non-Return
+    </div>
+  </section>
+  <section class="p-2">
+    <div class="issue-table-wrapper">
+      <table id="tbl-issue" class="table table-striped table-hover table-bordered">
+        <thead class="table-light">
+          <tr class="table-primary">
+            <th class="text-center">ID</th>
+            <th class="text-center">ISBN</th>
+            <th class="text-center">Member Id</th>
+            <th class="text-center">Issue Date</th>
+            <th class="text-center">Due/Return Date</th>
+            <th class="text-center">Fine (LKR)</th>
+            <th class="text-center">Returned</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let issue of issueList">
+            <td class="text-center">{{issue.id}}</td>
+            <td class="text-center">{{issue.isbn}}</td>
+            <td class="d-none d-xl-table-cell text-center">{{issue.memberId}}</td>
+            <td class="text-center">{{issue.issueDate}}</td>
+            <td class="text-center">{{issue.returnDate}}</td>
+            <td class="text-center">{{issue.fine.toFixed(2)}}</td>
+            <td class="text-center">{{issue.returned}}</td>
+            <td>
+              <div class="actions d-flex gap-3 justify-content-center">
+                <div *ngIf="issue.returned === 'NO'" (click)="updateIssue(issue, u_id, u_isbn, u_memberId, u_issueDate, u_dueDate, u_fine)" data-bs-toggle="modal" data-bs-target="#update-issue-modal" title="Return Book">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-in-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z"/>
+                    <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                  </svg>
+                </div>
+                <div *ngIf="issue.returned === 'YES'" (click)="deleteIssue(issue.id)" title="Delete Issue">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                       class="bi bi-trash" viewBox="0 0 16 16">
+                    <path
+                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                    <path
+                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                  </svg>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr *ngIf="!issueList">
+            <td class="text-center" colspan="8">No issue records are found!</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </section>
+</main>
+<!-- Save Modal -->
+<div class="modal fade" id="new-issue-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Book Issue</h1>
+        <button id="btnClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="mb-3">
+          <label for="txt-Isbn" class="form-label font-color-gray">ISBN</label>
+          <input #txtIsbn [(ngModel)]="isbn" (input)="checkBook(txtIsbn, validFeedback1)" type="text" class="form-control text-center" id="txt-Isbn" placeholder="Eg. 5672897153961">
+          <div class="invalid-feedback">
+            ISBN can't be empty
+          </div>
+          <div class="font-color-gray" #validFeedback1>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="txt-MemberId" class="form-label font-color-gray">Member Id</label>
+          <input #txtMemberId [(ngModel)]="memberId" (input)="checkMember(txtMemberId, validFeedback2)" type="text" class="form-control text-center" id="txt-MemberId" placeholder="Eg. 951839813V">
+          <div class="invalid-feedback">
+            Member id can't be empty
+          </div>
+          <div class="font-color-gray" #validFeedback2>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <div id="loader">
+          <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        </div>
+        <button id="btn-save" type="button" class="btn btn-primary" (click)="issueBook(txtIsbn, txtMemberId, [validFeedback1, validFeedback2])">Issue</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Update Modal -->
+<div class="modal fade" id="update-issue-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Return Book</h1>
+        <button id="btnClose1" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <input #u_id hidden="hidden">
+        <div class="mb-3">
+          <label for="txt-isbn2" class="form-label font-color-gray">ISBN</label>
+          <input #u_isbn type="text" class="form-control text-center" id="txt-isbn2" disabled>
+        </div>
+        <div class="mb-3">
+          <label for="txt-memberId2" class="form-label font-color-gray">Member Id</label>
+          <input #u_memberId type="text" class="form-control text-center" id="txt-memberId2" disabled>
+        </div>
+        <div class="mb-3">
+          <label for="txt-issue-date" class="form-label font-color-gray">Issue Date</label>
+          <input #u_issueDate type="text" class="form-control text-center" id="txt-issue-date" disabled>
+        </div>
+        <div class="mb-3">
+          <label for="txt-due-date" class="form-label font-color-gray">Due Date</label>
+          <input #u_dueDate type="text" class="form-control text-center" id="txt-due-date" disabled>
+        </div>
+        <div class="mb-3">
+          <label for="txt-fine" class="form-label font-color-gray">Fine</label>
+          <input #u_fine type="text" class="form-control text-center" id="txt-fine" disabled>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <div id="update_loader">
+          <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        </div>
+        <button (click)="returnBook(u_id, u_fine, [u_isbn, u_memberId, u_issueDate, u_dueDate])" id="btn-update" type="button" class="btn btn-primary">Return</button>
+      </div>
+    </div>
+  </div>
+</div>
